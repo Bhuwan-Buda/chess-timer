@@ -1,7 +1,13 @@
 import "./App.css";
+import "react-color-palette/css";
+import ChessTimer from "./Components/ChessTimer";
 
 function App() {
-  return <div className="App">Chess Timer</div>;
+  return (
+    <>
+      <ChessTimer />
+    </>
+  );
 }
 
 export default App;
