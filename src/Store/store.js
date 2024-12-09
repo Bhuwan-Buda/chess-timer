@@ -13,7 +13,7 @@ import {
 import rootReducer from ".";
 
 const persistConfig = {
-  key: "ChessTimer",
+  key: "Chess-Timer-App",
   storage,
   version: 1,
   whitelist: ["chessTimer"],

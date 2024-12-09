@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import clickSound from "../assets/click-sound.mp3";
+import pressSound from "../assets/press-sound.mp3";
 import beepSound from "../assets/beep-sound.mp3";
 import finalBeepSound from "../assets/final-beep-sound.mp3";
 
@@ -154,7 +154,7 @@ const ChessTimer = () => {
     setDecreaseBlackTime(true);
     setWhiteSteps((prev) => prev + 1);
     if (whiteTime >= 10) {
-      new Audio(clickSound).play();
+      new Audio(pressSound).play();
     } else {
       new Audio(beepSound).play();
     }
@@ -174,7 +174,7 @@ const ChessTimer = () => {
     setDecreaseWhiteTime(true);
     setBlackSteps((prev) => prev + 1);
     if (blackTime >= 10) {
-      new Audio(clickSound).play();
+      new Audio(pressSound).play();
     } else {
       new Audio(beepSound).play();
     }

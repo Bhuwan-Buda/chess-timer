@@ -18,4 +18,14 @@ root.render(
   </React.StrictMode>
 );
 
+if ("serviceWorker" in navigator) {
+  console.log(navigator, "navigator");
+  navigator.serviceWorker
+    .register("../public/service-worker.js")
+    .then((registration) => {
+      console.log(registration, "sdfsd")
+      console.log("Service Worker registered with scope:", registration.scope);
+    });
+}
+
 reportWebVitals();
