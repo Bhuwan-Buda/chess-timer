@@ -3,9 +3,18 @@ const urlsToCache = [
   "/",
   "/index.html",
   "/manifest.json",
-  "/favicon.ico",
-  "/logo192.png",
-  "/logo512.png",
+  "/chess-timer.ico",
+  "/chess-timer-large.png",
+  "/chess-timer-small.png",
+  "/assets/beep-sound.mp3",
+  "/assets/final-beep-sound.mp3",
+  "/assets/press-sound.mp3",
+  "/Components/ChessTimer.js",
+  "/Components/ColorPicker.js",
+  "/Components/SelectTime.js",
+  "/Redux/chessTimerSlice.js",
+  "/Store/index.js",
+  "/Store/store.js",
 ];
 
 // Install and cache necessary files
@@ -21,7 +30,18 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) {
+        return response; // Return cached response
+      } else {
+        return fetch(event.request) // Network fallback if not cached
+          .then((networkResponse) => {
+            // Optionally, cache the new response
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, networkResponse.clone());
+            });
+            return networkResponse;
+          });
+      }
     })
   );
 });
