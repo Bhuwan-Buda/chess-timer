@@ -30,18 +30,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      if (response) {
-        return response; // Return cached response
-      } else {
-        return fetch(event.request) // Network fallback if not cached
-          .then((networkResponse) => {
-            // Optionally, cache the new response
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, networkResponse.clone());
-            });
-            return networkResponse;
-          });
-      }
+      return response || fetch(event.request);
     })
   );
 });
