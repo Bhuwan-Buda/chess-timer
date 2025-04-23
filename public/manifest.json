@@ -1,20 +1,33 @@
 {
-  "short_name": "Chess Timer ",
+  "short_name": "Chess Timer",
   "name": "Chess Timer",
   "icons": [
-   
     {
-      "src": "chess-timer.jpg",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/chess-timer-small.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "chess-timer.jpg",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/chess-timer-large.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "screenshots": [
+    {
+      "src": "/home-mobile.png",
+      "sizes": "360x640",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/home-desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

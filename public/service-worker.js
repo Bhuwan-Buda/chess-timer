@@ -1,13 +1,14 @@
-// public/service-worker.js
-
-const CACHE_NAME = "chess-timer-1.0.0";
+const CACHE_NAME = "chess-timer-v1";
 const urlsToCache = [
   "/",
   "/index.html",
   "/manifest.json",
-  // Add other static assets and routes that you want to cache
+  "/favicon.ico",
+  "/logo192.png",
+  "/logo512.png",
 ];
 
+// Install and cache necessary files
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -16,10 +17,27 @@ self.addEventListener("install", (event) => {
   );
 });
 
+// Serve cached content when offline
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
+  );
+});
+
+// Update the service worker and clean old caches
+self.addEventListener("activate", (event) => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((name) => {
+          if (!cacheWhitelist.includes(name)) {
+            return caches.delete(name);
+          }
+        })
+      )
+    )
   );
 });
