@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useCallback, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import Box from "@mui/material/Box";
@@ -8,9 +8,8 @@ import Typography from "@mui/material/Typography";
 import pressSound from "../assets/press-sound.mp3";
 import beepSound from "../assets/beep-sound.mp3";
 import finalBeepSound from "../assets/final-beep-sound.mp3";
-
-const SelectTime = lazy(() => import("./SelectTime"));
-const ColorPickerComponent = lazy(() => import("./ColorPicker"));
+import SelectTime from "./SelectTime";
+import ColorPickerComponent from "./ColorPicker";
 
 const useStyles = makeStyles({
   wrapper: {
